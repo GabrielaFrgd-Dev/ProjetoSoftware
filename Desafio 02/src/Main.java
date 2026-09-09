@@ -18,7 +18,6 @@ public class Main {
             System.out.print("Digite uma opção");
             String opção = sc.nextLine();
 
-            sw
         }
     }
 }
