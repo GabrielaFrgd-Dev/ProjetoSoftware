@@ -1,39 +1,41 @@
-public class Produto {
-    private String nome;
-    private double preço;
-    private int quantidade;
+import java.util.ArrayList;
 
-    //Construtor//
-    public  Produto(String nome, double preço, int quantidade) {
-        this.nome = nome;
-        this.preço = preço;
-        this.quantidade = quantidade;
+public class GerenciarProdutos {
+    private ArrayList<Produto> produtos = new ArrayList<>();
+
+    public void CadastrarProduto(Produto produto) {
+        produtos.add(produto);
+            System.out.println("Produto Cadastrado com sucesso!");
+        }
+
+    public void listarProdutos(){
+        if (produtos.isEmpty()){
+            System.out.println("Nenhum produto cadastrado!");
+            return;
+        }
+
+            System.out.println("\n| ID | NOME | PRECO | QUANTIDADE | VALOR EM ESTOQUE |");
+        for (int i = 0; i < produtos.size(); i++) {
+            System.out.println(produtos.get(i));
+        }
     }
 
-    //Getters e Setters//
-    public String getNome() {
-        return nome;
+    public void atualizarProduto(int id, String nome, double preço, int quantidade) {
+        if (id >= 0 && id < produtos.size()) {
+            Produto produto = produtos.get(id);
+            produto.setNome(nome);
+            produto.setPreço(preço);
+            produto.setQuantidade(quantidade);
+            System.out.println("ID invalido!");
+        }
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void removerProduto(int id){
+        if (id >= 0 && id < produtos.size()) {
+            produtos.remove(id);
+            System.out.println("Produto removido com sucesso!");
+        } else {
+            System.out.println("ID invalido!");
+        }
     }
-
-    public void setPreço(double preço) {
-        this.preço = preço;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double calcularValorEstoque() {
-        return this.preço * quantidade;
-    }
-
-    @Override
-    public String toString(){
-
-        return nome + " | R$ " + preço + " | " + quantidade + " | R$ " + calcularValorEstoque();
-   }
 }
