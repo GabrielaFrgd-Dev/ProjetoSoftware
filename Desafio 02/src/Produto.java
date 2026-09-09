@@ -10,7 +10,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    //Getters e Setters
+    //Getters e Setters//
+    public String getNome() {
+        return nome;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -19,16 +23,17 @@ public class Produto {
         this.preço = preço;
     }
 
-    public void getQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
-   public double calcularValorEstoque(){
-        return this.preço * this.quantidade;
-   }
+    public double calcularValorEstoque() {
+        return this.preço * quantidade;
+    }
 
-   @Override
+    @Override
     public String toString(){
-        return nome + " | " + preço + " | " + quantidade;
+
+        return nome + " | R$ " + preço + " | " + quantidade + " | R$ " + calcularValorEstoque();
    }
 }
